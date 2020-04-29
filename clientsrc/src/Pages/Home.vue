@@ -4,7 +4,9 @@
     <h1 class="border">Welcome to Your Vue.js App</h1>
     <div class="text-center">
       <!-- this button sends you to the create page, maybe router link? -->
-      <button class="btn btn-lg btn-info px-5 border">Create A Book</button>
+      <router-link :to="{name: 'CreateBook'}">
+        <button class="btn btn-lg btn-info px-5 border">Create A Book</button>
+      </router-link>
     </div>
     <div class="row border m-1 pl-5">
       <!-- this is were we would import books, they need to be col-3 -->
