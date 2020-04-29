@@ -1,10 +1,20 @@
 <template>
-  <div></div>
+  <div class="CreateBook">Create a book here...</div>
 </template>
 
+
 <script>
-export default {};
+export default {
+  name: "CreateBook",
+  data() {
+    return {};
+  },
+  computed: {},
+  methods: {},
+  components: {}
+};
 </script>
 
-<style>
+
+<style scoped>
 </style>

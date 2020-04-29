@@ -5,6 +5,8 @@ import Home from "../Pages/Home.vue";
 // @ts-ignore
 import Profile from "../Pages/Profile.vue";
 import { authGuard } from "@bcwdev/auth0-vue";
+// @ts-ignore
+import CreateBook from "../Pages/CreateBook.vue";
 
 Vue.use(VueRouter);
 
@@ -19,6 +21,12 @@ const routes = [
     name: "Profile",
     component: Profile,
     beforeEnter: authGuard,
+  },
+  {
+    path: "/books",
+    name: "CreateBook",
+    component: CreateBook,
+    // beforeEnter: authGuard,
   },
 ];
 
