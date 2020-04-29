@@ -1,9 +1,9 @@
 import express from "express";
 import BaseController from "../utils/BaseController";
-import { valuesService } from "../services/ValuesService";
+import { booksService } from "../services/BooksService";
 import auth0Provider from "@bcwdev/auth0provider";
 
-export class BookController extends BaseController {
+export class BooksController extends BaseController {
   constructor() {
     super("api/books");
     this.router
@@ -41,9 +41,9 @@ export class BookController extends BaseController {
     }
   }
   //NOTE: verify that userEmail is needed
-  async put(req,res,next){
+  async edit(req,res,next){
       try {
-          let data = await booksService.edit(req.params.id, req.userInfo.email, req.body)
+          let data = await booksService.put(req.params.id, req.userInfo.email, req.body)
           return res.send(data)
       } catch (error) {
           next(error)
