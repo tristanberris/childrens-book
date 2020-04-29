@@ -9,7 +9,7 @@ export class CommentsController extends BaseController {
     this.router
       .get("", this.getAll)
       .get("/:id", this.getById)
-      .put("", this.edit)
+      // .put("", this.edit)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(auth0Provider.getAuthorizedUserInfo)
       .post("", this.create);

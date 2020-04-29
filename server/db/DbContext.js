@@ -5,6 +5,7 @@ import ValueSchema from "../models/Value";
 import ProfileSchema from "../models/Profile";
 import BookSchema from "../models/Book"
 import CommentSchema from "../models/Comment"
+import BackgroundImageSchema from "../models/BackgroundImage"
 
 class DbContext {
   Values = mongoose.model("Value", ValueSchema);
@@ -13,6 +14,7 @@ class DbContext {
   Profile = mongoose.model("Profile", ProfileSchema);
   Books = mongoose.model("Book", BookSchema);
   Comments = mongoose.model("Comment", CommentSchema);
+  BackgroundImage = mongoose.model("BackgroundImage", BackgroundImageSchema)
 }
 
 export const dbContext = new DbContext();
