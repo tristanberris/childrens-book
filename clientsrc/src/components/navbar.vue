@@ -10,8 +10,14 @@
         <li class="nav-item" :class="{ active: $route.name == 'Home' }">
           <router-link :to="{ name: 'Home' }" class="nav-link">Home</router-link>
         </li>
-        <li class="nav-item" v-if="$auth.isAuthenticated" :class="{ active: $route.name == 'Profile' }">
-          <router-link class="nav-link" :to="{ name: 'Profile' }">My Profile</router-link>
+        <li
+          class="nav-item"
+          v-if="$auth.isAuthenticated"
+          :class="{ active: $route.name == 'Profile' }"
+        >
+          <router-link class="nav-link" :to="{ name: 'Profile' }"
+            >The Profile</router-link
+          >
         </li>
       </ul>
       <span class="navbar-text">
