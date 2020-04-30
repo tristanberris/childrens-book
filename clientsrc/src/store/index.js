@@ -17,11 +17,15 @@ let api = Axios.create({
 
 export default new Vuex.Store({
   state: {
-    profile: {}
+    profile: {},
+    books: []
   },
   mutations: {
     setProfile(state, profile) {
       state.profile = profile;
+    },
+    setBooks(state, books){
+      state.books = books
     }
   },
   actions: {
@@ -37,6 +41,14 @@ export default new Vuex.Store({
         commit("setProfile", res.data);
       } catch (error) {
         console.error(error);
+      }
+    },
+    async getBooks({commit, dispatch}){
+      try {
+        let res = await api.get("books")
+        commit('setBooks', res.data)
+      } catch (error) {
+        console.error(error)
       }
     }
   }
