@@ -9,8 +9,7 @@
       </router-link>
     </div>
     <div class="row bookSpacing border m-1">
-    
-        <Book v-for="Book in Books" :bookData="Book" :key="Book._id"> </Book>
+        <Book  v-for="Book in Books" :bookData="Book" :key="Book._id"> </Book>
     
      
     </div>
@@ -40,6 +39,6 @@ export default {
 <style>
 .bookSpacing{
   justify-content: space-around;
-  display: flex;
+  /* display: flex; */
 }
 </style>
