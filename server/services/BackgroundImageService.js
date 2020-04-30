@@ -17,6 +17,7 @@ class BackgroundImageService {
 
     async create(rawData){
         let data = await dbContext.BackgroundImage.create(rawData)
+        return data
     }
 
    
