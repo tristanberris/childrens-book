@@ -1,16 +1,31 @@
 <template>
-  <a href data-toggle="modal" :data-target="'#bookModal-'+bookData.id">
+<div>
+
+  <!-- <a data-toggle="modal" :data-target="'#bookModal-'+bookData.id"> -->
+
+
     <div
       class="col-md-5 col-sm-12 col-lg-3 col-xl-2 m-1 madeBooks img d-flex flex-column"
       :style="{backgroundImage:`url(${bookData.coverImg})`}"
+       data-toggle="modal" :data-target="'#bookModal-'+bookData.id"
     >
       <!-- <img v-bind:src="bookData.coverImg" class="img img-fluid bg"  alt=""/> -->
 
       <h2 class="align-self-start text-center w-100 mb-auto">{{bookData.title}}</h2>
 
       <h4 class="text-center mx-auto">{{bookData.author}}</h4>
+      </div>
+
+  <!-- </a> -->
+      
+      <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">close me</span>
+        </button> -->
+      
+      <!-- model -->
+
       <div
-        class="modal fade d-flex"
+        class="modal fade"
         :id="'bookModal-'+bookData.id"
         tabindex="-1"
         role="dialog"
@@ -31,8 +46,9 @@
             <!-- </div> -->
         </div>
       </div>
-    </div>
-  </a>
+
+
+</div>
 </template>
 
 
