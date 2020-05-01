@@ -1,49 +1,38 @@
 <template>
-  <a href="" data-toggle="modal" :data-target="'#bookModal-'+bookData.id">
-  <div
-    class="col-md-5 col-sm-12 col-lg-3 col-xl-2 m-1 madeBooks img d-flex flex-column"
-    :style="{backgroundImage:`url(${bookData.coverImg})`}"
-  >
-    <!-- <img v-bind:src="bookData.coverImg" class="img img-fluid bg"  alt=""/> -->
-
-    <h2 class="align-self-start text-center w-100 mb-auto">{{bookData.title}}</h2>
-
-    <h4 class="text-center mx-auto">{{bookData.author}}</h4>
-    <!-- Button trigger modal -->
-    <!-- <button
-      type="button"
-      class="btn btn-primary"
-      data-toggle="modal"
-      data-target="#exampleModalCenter"
-    >Launch demo modal</button> -->
-
-    <!-- Modal -->
+  <a href data-toggle="modal" :data-target="'#bookModal-'+bookData.id">
     <div
-      class="modal fade"
-      :id="'bookModal-'+bookData.id"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true"
+      class="col-md-5 col-sm-12 col-lg-3 col-xl-2 m-1 madeBooks img d-flex flex-column"
+      :style="{backgroundImage:`url(${bookData.coverImg})`}"
     >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">{{bookData.title}}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">{{bookData.author}}</div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-          </div>
+      <!-- <img v-bind:src="bookData.coverImg" class="img img-fluid bg"  alt=""/> -->
+
+      <h2 class="align-self-start text-center w-100 mb-auto">{{bookData.title}}</h2>
+
+      <h4 class="text-center mx-auto">{{bookData.author}}</h4>
+      <div
+        class="modal fade d-flex"
+        :id="'bookModal-'+bookData.id"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div
+          class="modalMadeBook img d-flex flex-column modal-dialog modal-dialog-centered"
+          role="document"
+          :style="{backgroundImage:`url(${bookData.coverImg})`}"
+        >
+            <!-- <div class="modal-content"> -->
+              <!-- <h2 class="align-self-start text-center w-100 mb-auto">{{bookData.title}}</h2> -->
+              <h2 class="align-self-start  text-center w-100 mb-auto">{{bookData.title}}</h2>
+              <h4 class="text-center mx-auto">{{bookData.author}}</h4>
+              <div class="modal-footer">
+              </div>
+            <!-- </div> -->
         </div>
       </div>
     </div>
-  </div>
-    </a>
+  </a>
 </template>
 
 
@@ -89,5 +78,12 @@ export default {
   /* width: 100%;
   min-width: 20vw; */
   /* padding-top: 15%; */
+}
+.modalMadeBook{
+  height: 90vh;
+  width: 72vw;
+  min-width: 72vh;
+  min-height: 90vh;
+  background-size: cover;
 }
 </style>
