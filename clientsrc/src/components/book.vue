@@ -1,5 +1,5 @@
 <template>
-  <a href="" data-toggle="modal" data-target="#exampleModalCenter">
+  <a href="" data-toggle="modal" :data-target="'#bookModal-'+bookData.id">
   <div
     class="col-md-5 col-sm-12 col-lg-3 col-xl-2 m-1 madeBooks img d-flex flex-column"
     :style="{backgroundImage:`url(${bookData.coverImg})`}"
@@ -20,7 +20,7 @@
     <!-- Modal -->
     <div
       class="modal fade"
-      id="exampleModalCenter"
+      :id="'bookModal-'+bookData.id"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalCenterTitle"
@@ -29,15 +29,15 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">{{bookData.title}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">...</div>
+          <div class="modal-body">{{bookData.author}}</div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
           </div>
         </div>
       </div>
