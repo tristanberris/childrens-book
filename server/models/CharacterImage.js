@@ -10,7 +10,7 @@ const Character  = new Schema(
     { timestamps: true, toJSON: { virtuals: true } }
 );
 
-Book.virtual("creator", {
+Character.virtual("creator", {
     localField: "creatorEmail",
     ref: "Profile",
     foreignField: "email",
