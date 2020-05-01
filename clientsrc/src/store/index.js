@@ -18,7 +18,8 @@ let api = Axios.create({
 export default new Vuex.Store({
   state: {
     profile: {},
-    books: []
+    books: [],
+    activeBook: {}
   },
   mutations: {
     setProfile(state, profile) {
@@ -26,6 +27,9 @@ export default new Vuex.Store({
     },
     setBooks(state, books){
       state.books = books
+    },
+    setActiveBook(state, activeBook){
+      state.activeBook = activeBook
     }
   },
   actions: {
@@ -50,6 +54,15 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error)
       }
-    }
+    },
+    async setActiveBook({commit, dispatch}, bookId) {
+      try {
+        let res = await api.get(`books/${bookId}`)
+        commit('setActiveBook', res.data)
+        console.log("set book", res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
   }
 });
