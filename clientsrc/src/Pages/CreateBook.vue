@@ -1,20 +1,19 @@
 <template>
   <div class="CreateBook container-fluid">
-    <div class="row mt-2">
-      <!-- <canvas id="myCanvas" class="col-md-8" width="410" height="500">
-
-      </canvas> -->
-      <v-stage
-        class="col-md-8"
+    <div class="row mt-2 mb-5">
+      <div
+        class="col-md-8 bg-light border rounded border-dark"
         width="410"
         height="500"
-        ref="stage"
-        :config="configKonva"
-        @dragstart="handleDragstart"
-        @dragend="handleDragend"
-        id="container"
       >
-        <!-- <v-layer ref="layer">
+        <v-stage
+          ref="stage"
+          :config="configKonva"
+          @dragstart="handleDragstart"
+          @dragend="handleDragend"
+          id="container"
+        >
+          <!-- <v-layer ref="layer">
           <v-star v-for="item in list" :key="item.id" :config="{
                       x: item.x,
                       y: item.y,
@@ -34,15 +33,15 @@
                       shadowOpacity: 0.6
                     }"></v-star>
         </v-layer> -->
-        <v-layer ref="layer">
-          <v-image
-            :config="{
-              image: image,
-              draggable: true,
-            }"
-          />
-        </v-layer>
-        <!-- <v-layer ref="layer">
+          <v-layer ref="layer">
+            <v-image
+              :config="{
+                image: image,
+                draggable: true,
+              }"
+            />
+          </v-layer>
+          <!-- <v-layer ref="layer">
           <v-image
             :config="{
               image: image,
@@ -50,8 +49,8 @@
             }"
           />
         </v-layer> -->
-      </v-stage>
-      <!-- <v-stage
+        </v-stage>
+        <!-- <v-stage
         ref="stage"
         :config="configKonva"
         @dragstart="handleDragstart"
@@ -59,18 +58,50 @@
       >
         <v-layer ref="layer"> </v-layer>
       </v-stage> -->
-      <!-- <div class="col-md-4 border selectBar" width="410" height="500">
+        <!-- <div class="col-md-4 border selectBar" width="410" height="500">
         some moveable text
       </div> -->
-    </div>
-    <div class="row">
+      </div>
       <div
-        class="col-md-8 m-2 border border-dark rounded shadow bg-light p-3"
+        class="col-md-4 border border-dark rounded shadow bg-light w-100 p-3"
         width="410"
         height="500"
         id="drag-items"
       >
-        <img src="../assets/Oldman.png" alt="" draggable="true" />
+        <div class="row">
+          <div class="col-6">Forward</div>
+          <div class="col-6">Back</div>
+
+          <div class="col-12">
+            <div class="row">
+              <!-- Images will be inserted here from a component -->
+              <div class="col-4">
+                <img
+                  src="../assets/Oldman.png"
+                  alt=""
+                  draggable="true"
+                  class="img-fluid"
+                />
+              </div>
+              <div class="col-4">
+                <img
+                  src="../assets/Oldman.png"
+                  alt=""
+                  draggable="true"
+                  class="img-fluid"
+                />
+              </div>
+              <div class="col-4">
+                <img
+                  src="../assets/Oldman.png"
+                  alt=""
+                  draggable="true"
+                  class="img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -111,7 +142,7 @@ export default {
 
     var stage = new Konva.Stage({
       container: "container",
-      width: width,
+      width: width * 0.65,
       height: height,
     });
     var layer = new Konva.Layer();
