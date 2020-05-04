@@ -19,21 +19,46 @@ export default new Vuex.Store({
   state: {
     profile: {},
     books: [],
-    activeBook: {}
+    activeBook: {
+      name: 'woot woot',
+      pages: []
+    },
+    activePage: {
+      id: '21390231984325094093',
+      backgroundImages: [],
+      images: [{
+        id: `${Math.floor(Math.random() * 999999)}__${Math.floor(
+          Math.random() * 999999
+        )}`,
+        x: 224,
+        y: 139,
+        url: "/img/oldman2.png",
+        draggable: true
+      }, {
+        id: `${Math.floor(Math.random() * 999999)}__${Math.floor(
+          Math.random() * 999999
+        )}`,
+        x: 24,
+        y: 39,
+        url: "/img/lady1.png",
+        draggable: true
+      }],
+      foregroundImages: []
+    }
   },
   mutations: {
     setProfile(state, profile) {
       state.profile = profile;
     },
-    setBooks(state, books){
+    setBooks(state, books) {
       state.books = books
     },
-    setActiveBook(state, activeBook){
+    setActiveBook(state, activeBook) {
       state.activeBook = activeBook
     }
   },
   actions: {
-    setBearer({}, bearer) {
+    setBearer({ }, bearer) {
       api.defaults.headers.authorization = bearer;
     },
     resetBearer() {
@@ -47,7 +72,7 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
-    async getBooks({commit, dispatch}){
+    async getBooks({ commit, dispatch }) {
       try {
         let res = await api.get("books")
         commit('setBooks', res.data)
@@ -55,7 +80,7 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async setActiveBook({commit, dispatch}, bookId) {
+    async setActiveBook({ commit, dispatch }, bookId) {
       try {
         let res = await api.get(`books/${bookId}`)
         commit('setActiveBook', res.data)
