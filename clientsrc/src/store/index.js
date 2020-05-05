@@ -83,6 +83,15 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async createBook({commit, dispatch}, bookData){
+      try {
+        console.log(bookData)
+        await api.post("books", bookData)
+
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async setActiveBook({ commit, dispatch }, bookId) {
       try {
         let res = await api.get(`books/${bookId}`)

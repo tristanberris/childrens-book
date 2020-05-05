@@ -33,9 +33,10 @@ export class BooksController extends BaseController {
   async create(req, res, next) {
     try {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
-      req.body.creator = req.user.email;
+      req.body.creator = req.userInfo.email;
+      // req.body.coverImg = req.body.imgUrl
       let data = await booksService.create(req.body)
-      res.send(data);
+      return res.send(data);
     } catch (error) {
       next(error);
     }

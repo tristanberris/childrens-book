@@ -6,7 +6,7 @@
 
     <div
       class="col-md-5 col-sm-12 col-lg-3 col-xl-2 m-1 madeBooks img d-flex flex-column"
-      :style="{backgroundImage:`url(${bookData.coverImg})`}"
+      :style="{backgroundImage:`url(${bookData.imgUrl})`}"
        data-toggle="modal" :data-target="'#bookModal-'+bookData.id"
     >
       <!-- <img v-bind:src="bookData.coverImg" class="img img-fluid bg"  alt=""/> -->
@@ -35,7 +35,7 @@
         <div
           class="modalMadeBook img d-flex flex-column modal-dialog modal-dialog-centered"
           role="document"
-          :style="{backgroundImage:`url(${bookData.coverImg})`}"
+          :style="{backgroundImage:`url(${bookData.imgUrl})`}"
         >
             <!-- <div class="modal-content"> -->
               <!-- <h2 class="align-self-start text-center w-100 mb-auto">{{bookData.title}}</h2> -->
