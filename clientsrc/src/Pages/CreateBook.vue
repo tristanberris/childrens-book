@@ -4,6 +4,60 @@
       <div class="col-md-8 bg-light border rounded border-dark" width="410" height="500">
         <button class="btn" @click="save()">Save</button>
         <button class="btn" @click="picture()">Picture</button>
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn"
+          data-toggle="modal"
+          data-target="#exampleModalCenter"
+        >Finish Book</button>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModalCenter"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalCenterTitle"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            
+              <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Title</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="title"
+                      aria-describedby="title"
+                      placeholder="Enter title"
+                    />
+                    
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Author</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="author"
+                      placeholder="Author"
+                    />
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <v-stage
           ref="stage"
@@ -95,7 +149,7 @@ export default {
   methods: {
     save() {
       // save the active page
-      this.$store.dispatch("save", this.activePage)
+      this.$store.dispatch("save", this.activePage);
     },
     load() {},
     picture() {
@@ -105,8 +159,8 @@ export default {
         }
       });
     },
-    setCharacter(){
-      this.$store.dispatch("setCharacter", )
+    setCharacter() {
+      this.$store.dispatch("setCharacter");
     },
     dragStart(img) {
       this.draggingItem = img;
