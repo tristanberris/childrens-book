@@ -10,6 +10,7 @@
           class="btn"
           data-toggle="modal"
           data-target="#exampleModalCenter"
+          @click="picture()"
         >Finish Book</button>
 
         <!-- Modal -->
@@ -132,7 +133,8 @@ export default {
       },
       draggingItem: {},
       selectedShapeId: "",
-      book: {}
+      book: {},
+      // imgUrl: {imgUrl: this.picture}
     };
   },
   computed: {
@@ -157,12 +159,17 @@ export default {
     createBook(){
       
       this.$store.dispatch("createBook", this.book)
+      console.log(this.book)
+
     },
     load() {},
     picture() {
       stage.toImage({
         callback: img => {
-          console.log(img.src);
+          // debugger
+          // console.log(img.src);
+          // return img.src
+          this.book.imgUrl = img.src
         }
       });
     },

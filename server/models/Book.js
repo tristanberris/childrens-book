@@ -8,7 +8,7 @@ const Book = new Schema(
     // story: { type: String, required: true },
     // bookId: { type: String, required: true },
     // closed: { type: Boolean, required: true, default: false},
-    coverImg: {type: String, required: false},
+    imgUrl: {type: String, required: true},
     
     creatorEmail: { type: String, required: false },
     
