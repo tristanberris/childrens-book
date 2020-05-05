@@ -123,7 +123,11 @@ export default {
       this.list.push(item);
     },
     drop(event) {
-      console.log(event);
+      let newImage = this.draggingItem;
+      newImage.x = event.layerX;
+      newImage.y = event.layerY;
+      console.log("event and image: ", event, this.draggingItem, newImage);
+
       // TODO take the image beign dragged and add it ot the active page
       // activePage.images
     },
