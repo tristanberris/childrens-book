@@ -5,27 +5,27 @@
         <button class="btn" @click="save()">Save</button>
         <button class="btn" @click="picture()">Picture</button>
 
-        <v-stage
-          ref="stage"
-          class="main-stage"
-          :config="configKonva"
-          @drop="drop"
-          @dragover.prevent
-          @mousedown="handleStageMouseDown"
-          dropzone="page"
-        >
-          <v-layer ref="layer">
-            <v-image
-              :id="img.id"
-              v-for="img in pageImages"
-              :config="img"
-              @dragend="(dragEvent) => handleMove(dragEvent,img)"
-              @transformend="(transformEvent) => handleTransformEnd(transformEvent, img)"
-              :key="img.id"
-            />
-            <v-transformer ref="transformer" />
-          </v-layer>
-        </v-stage>
+        <div @drop.stop="drop" @dragover.prevent>
+          <v-stage
+            ref="stage"
+            class="main-stage"
+            :config="configKonva"
+            @dragover.prevent
+            @mousedown="handleStageMouseDown"
+          >
+            <v-layer ref="layer">
+              <v-image
+                :id="img.id"
+                v-for="img in pageImages"
+                :config="img"
+                @dragend="(dragEvent) => handleMove(dragEvent,img)"
+                @transformend="(transformEvent) => handleTransformEnd(transformEvent, img)"
+                :key="img.id"
+              />
+              <v-transformer ref="transformer" />
+            </v-layer>
+          </v-stage>
+        </div>
       </div>
       <div
         class="col-md-4 border border-dark rounded shadow bg-light w-100 p-3"
@@ -40,14 +40,14 @@
           <div class="col-12">
             <div class="row">
               <!-- Images will be inserted here from a component -->
-              <div class="col-4" v-for="img in imgOptions" :key="img.url">
+              <div class="col-4" v-for="image in imgOptions" :key="image.url">
                 <img
-                  :src="img.url"
+                  :src="image.url"
                   alt
                   draggable="true"
                   class="img-fluid"
-                  @dragstart="dragStart(img)"
-                  @click="setCharacter()"
+                  @dragstart="dragStart($event, image)"
+                  @click="loadImg(image)"
                 />
               </div>
             </div>
@@ -95,9 +95,12 @@ export default {
   methods: {
     save() {
       // save the active page
-      this.$store.dispatch("save", this.activePage)
+      this.$store.dispatch("save", this.activePage);
     },
-    load() {},
+    // loadImg(img) {
+    //   console.log("image passed to loadIMg: ", img);
+    //   this.$store.dispatch("loadImg", this.activePage.images);
+    // },
     picture() {
       stage.toImage({
         callback: img => {
@@ -105,20 +108,22 @@ export default {
         }
       });
     },
-    setCharacter(){
-      this.$store.dispatch("setCharacter", )
-    },
-    dragStart(img) {
+    // setCharacter() {
+    //   this.$store.dispatch("setCharacter");
+    // },
+    dragStart(e, img) {
       this.draggingItem = img;
+      console.log("dragging item", this.draggingItem);
       // save drag element:
-      this.dragItemId = e.target.id();
+      // this.dragItemId = e.target.id;
       // move current element to the top:
       const item = this.list.find(i => i.id === this.dragItemId);
       const index = this.list.indexOf(item);
       this.list.splice(index, 1);
       this.list.push(item);
     },
-    drop(e) {
+    drop(event) {
+      console.log(event);
       // TODO take the image beign dragged and add it ot the active page
       // activePage.images
     },

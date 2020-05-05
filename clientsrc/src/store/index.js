@@ -38,8 +38,8 @@ export default new Vuex.Store({
         id: `${Math.floor(Math.random() * 999999)}__${Math.floor(
           Math.random() * 999999
         )}`,
-        x: 24,
-        y: 39,
+        x: 224,
+        y: 139,
         url: "/img/lady1.png",
         draggable: true
       }],
@@ -56,7 +56,7 @@ export default new Vuex.Store({
     setActiveBook(state, activeBook) {
       state.activeBook = activeBook
     },
-    setActivePage(state, activePage){
+    setActivePage(state, activePage) {
       state.activePage = activePage
     }
   },
@@ -92,21 +92,30 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async setActivePage({commit, dispatch}, pageId){
+    async setActivePage({ commit, dispatch }, pageId) {
       try {
-          let res  = await api.get(`page/${pageId}`)
-          commit('setActivePage', res.data)
-          console.log("set page", res.data) 
+        let res = await api.get(`page/${pageId}`)
+        commit('setActivePage', res.data)
+        console.log("set page", res.data)
       } catch (error) {
         console.error(error)
       }
     },
-    async save({commit, dispatch}, activePage){
+    async save({ commit, dispatch }, activePage) {
       try {
-        
+
       } catch (error) {
         console.error(error)
       }
-    }
+    },
+
+    // loadImg({ commit, dispatch }, img) {
+    //   console.log("loading img")
+    //   api.post('/', img)
+    //     .then(res => {
+    //       commit('setActivePage', res.data)
+    //     })
+    //   console.log("loading img3")
+    // }
   }
 });
