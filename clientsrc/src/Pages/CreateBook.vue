@@ -28,7 +28,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
-                <form>
+                <form @submit.prevent="createBook()">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Title</label>
                     <input
@@ -37,6 +37,7 @@
                       id="title"
                       aria-describedby="title"
                       placeholder="Enter title"
+                      v-model="book.title"
                     />
                     
                   </div>
@@ -47,13 +48,14 @@
                       class="form-control"
                       id="author"
                       placeholder="Author"
+                      v-model="book.author"
                     />
                   </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Submit</button>
               </div>
             </div>
           </div>
@@ -129,7 +131,8 @@ export default {
         height: height
       },
       draggingItem: {},
-      selectedShapeId: ""
+      selectedShapeId: "",
+      book: {}
     };
   },
   computed: {
@@ -150,6 +153,10 @@ export default {
     save() {
       // save the active page
       this.$store.dispatch("save", this.activePage);
+    },
+    createBook(){
+      
+      this.$store.dispatch("createBook", this.book)
     },
     load() {},
     picture() {

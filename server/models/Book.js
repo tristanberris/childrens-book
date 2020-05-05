@@ -5,12 +5,12 @@ const Book = new Schema(
   {
     title: { type: String, required: true },
     author: { type: String, required: true },
-    story: { type: String, required: true },
+    // story: { type: String, required: true },
     // bookId: { type: String, required: true },
-    closed: { type: Boolean, required: true, default: false},
+    // closed: { type: Boolean, required: true, default: false},
     coverImg: {type: String, required: false},
     
-    creatorEmail: { type: String, required: true },
+    creatorEmail: { type: String, required: false },
     
   },
   { timestamps: true, toJSON: { virtuals: true } }
