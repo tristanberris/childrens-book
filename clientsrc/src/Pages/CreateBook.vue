@@ -47,6 +47,7 @@
                   draggable="true"
                   class="img-fluid"
                   @dragstart="dragStart(img)"
+                  @click="setCharacter()"
                 />
               </div>
             </div>
@@ -94,6 +95,7 @@ export default {
   methods: {
     save() {
       // save the active page
+      this.$store.dispatch("save", this.activePage)
     },
     load() {},
     picture() {
@@ -103,15 +105,18 @@ export default {
         }
       });
     },
+    setCharacter(){
+      this.$store.dispatch("setCharacter", )
+    },
     dragStart(img) {
       this.draggingItem = img;
-      // // save drag element:
-      // this.dragItemId = e.target.id();
-      // // move current element to the top:
-      // const item = this.list.find(i => i.id === this.dragItemId);
-      // const index = this.list.indexOf(item);
-      // this.list.splice(index, 1);
-      // this.list.push(item);
+      // save drag element:
+      this.dragItemId = e.target.id();
+      // move current element to the top:
+      const item = this.list.find(i => i.id === this.dragItemId);
+      const index = this.list.indexOf(item);
+      this.list.splice(index, 1);
+      this.list.push(item);
     },
     drop(e) {
       // TODO take the image beign dragged and add it ot the active page

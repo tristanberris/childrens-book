@@ -6,7 +6,7 @@ const Book = new Schema(
     title: { type: String, required: true },
     author: { type: String, required: true },
     story: { type: String, required: true },
-    bookId: { type: String, required: true },
+    // bookId: { type: String, required: true },
     closed: { type: Boolean, required: true, default: false},
     coverImg: {type: String, required: false},
     

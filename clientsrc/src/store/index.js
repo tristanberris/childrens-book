@@ -55,6 +55,9 @@ export default new Vuex.Store({
     },
     setActiveBook(state, activeBook) {
       state.activeBook = activeBook
+    },
+    setActivePage(state, activePage){
+      state.activePage = activePage
     }
   },
   actions: {
@@ -89,5 +92,21 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async setActivePage({commit, dispatch}, pageId){
+      try {
+          let res  = await api.get(`page/${pageId}`)
+          commit('setActivePage', res.data)
+          console.log("set page", res.data) 
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async save({commit, dispatch}, activePage){
+      try {
+        
+      } catch (error) {
+        console.error(error)
+      }
+    }
   }
 });
