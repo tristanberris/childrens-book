@@ -1,16 +1,14 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
+let ObjectId = Schema.Types.ObjectId
 
 const Page = new Schema(
   {
-    title: { type: String, required: true },
-    author: { type: String, required: true },
-    story: { type: String, required: true },
-    bookId: { type: String, required: true },
-    closed: { type: Boolean, required: true, default: false},
-    coverImg: {type: String, required: false},
+    bookId: { type: ObjectId, ref: "Book", required: true },
+    // bookId: { type: String, required: true },
+    imgUrl: {type: String, required: true},
+    pageNumber: {type: String, required: true}
     
-    creatorEmail: { type: String, required: true },
     
   },
   { timestamps: true, toJSON: { virtuals: true } }
