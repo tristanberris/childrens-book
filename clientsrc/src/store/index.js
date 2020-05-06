@@ -26,23 +26,25 @@ export default new Vuex.Store({
     activePage: {
       id: '21390231984325094093',
       backgroundImages: [],
-      images: [{
-        id: `${Math.floor(Math.random() * 999999)}__${Math.floor(
-          Math.random() * 999999
-        )}`,
-        x: 224,
-        y: 139,
-        url: "/img/oldman2.png",
-        draggable: true
-      }, {
-        id: `${Math.floor(Math.random() * 999999)}__${Math.floor(
-          Math.random() * 999999
-        )}`,
-        x: 224,
-        y: 139,
-        url: "/img/lady1.png",
-        draggable: true
-      }],
+      images: [
+        {
+          id: `${Math.floor(Math.random() * 999999)}__${Math.floor(
+            Math.random() * 999999
+          )}`,
+          x: 224,
+          y: 139,
+          url: "/img/oldman2.png",
+          draggable: true
+        }, {
+          id: `${Math.floor(Math.random() * 999999)}__${Math.floor(
+            Math.random() * 999999
+          )}`,
+          x: 224,
+          y: 139,
+          url: "/img/lady1.png",
+          draggable: true
+        }
+      ],
       foregroundImages: []
     }
   },
@@ -58,6 +60,10 @@ export default new Vuex.Store({
     },
     setActivePage(state, activePage) {
       state.activePage = activePage
+    },
+    addActivePageImage(state, newImage) {
+      state.activePage.images.push(newImage)
+
     }
   },
   actions: {
@@ -83,7 +89,7 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async createBook({commit, dispatch}, bookData){
+    async createBook({ commit, dispatch }, bookData) {
       try {
         console.log(bookData)
         await api.post("books", bookData)
