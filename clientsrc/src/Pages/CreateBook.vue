@@ -69,8 +69,8 @@
             @mousedown="handleStageMouseDown"
           >
             <v-layer ref="layer">
+              <!-- :id="img.id" -->
               <v-image
-                :id="img.id"
                 v-for="img in pageImages"
                 :config="img"
                 @dragend="(dragEvent) => handleMove(dragEvent,img)"
@@ -95,7 +95,7 @@
           <div class="col-12">
             <div class="row">
               <!-- Images will be inserted here from a component -->
-              <div class="col-4" v-for="image in imgOptions" :key="image.url">
+              <div class="col-4" v-for="image in imgOptions" :key="image.id">
                 <img
                   :src="image.url"
                   alt
@@ -140,12 +140,17 @@ export default {
     activePage() {
       return this.$store.state.activePage;
     },
+    images() {
+      return this.activePage.images;
+    },
     pageImages() {
       let vm = this;
-      return this.activePage.images.map(imgData => {
+      return this.images.map(imgData => {
+        // debugger;
         return {
           ...imgData,
           image: vm.createImageElem(imgData.url)
+          // id: this.generateId(),
         };
       });
     }
@@ -179,23 +184,35 @@ export default {
     },
     dragStart(event, image) {
       this.draggingItem = image;
+      // draggingItem.id = `${Math.floor(Math.random() * 999999)}__${Math.floor(
+      //   Math.random() * 999999
+      // )}`;
       console.log("dragging item", this.draggingItem);
       // save drag element:
       this.dragItemId = event.target.id;
       // move current element to the top:
-      const item = this.list.find(i => i.id === this.dragItemId);
-      const index = this.list.indexOf(item);
-      this.list.splice(index, 1);
-      this.list.push(item);
+
+      //weird stuff?
+      // const item = this.list.find(i => i.id === this.dragItemId);
+      // const index = this.list.indexOf(item);
+      // this.list.splice(index, 1);
+      // this.list.push(item);
     },
-    drop(event) {
-      let newImage = this.draggingItem;
-      newImage.id = `${Math.floor(Math.random() * 999999)}__${Math.floor(
+    generateId() {
+      return `${Math.floor(Math.random() * 999999)}__${Math.floor(
         Math.random() * 999999
       )}`;
+    },
+
+    drop(event) {
+      let newImage = { ...this.draggingItem };
+      newImage.id = this.generateId();
+
+      //newImage.id = this.draggingItem.id;
       newImage.draggable = true;
       newImage.x = event.layerX;
       newImage.y = event.layerY;
+      newImage.image = this.createImageElem(newImage.url);
       console.log(
         "image: ",
         newImage,
@@ -204,13 +221,18 @@ export default {
         "event: ",
         event
       );
-      this.newImage = newImage;
+
       try {
-        this.$store.commit("addActivePageImage", this.newImage);
+        this.$store.commit("addActivePageImage", newImage);
+        setTimeout(() => {
+          console.log("drawing");
+          stage.draw();
+        }, 100);
       } catch (err) {
         console.eror(err);
       }
-      this.newImage = {};
+
+      this.draggingItem = {};
       // TODO take the image beign dragged and add it ot the active page
       // activePage.images
     },

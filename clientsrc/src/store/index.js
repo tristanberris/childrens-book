@@ -27,23 +27,23 @@ export default new Vuex.Store({
       id: '21390231984325094093',
       backgroundImages: [],
       images: [
-        {
-          id: `${Math.floor(Math.random() * 999999)}__${Math.floor(
-            Math.random() * 999999
-          )}`,
-          x: 224,
-          y: 139,
-          url: "/img/oldman2.png",
-          draggable: true
-        }, {
-          id: `${Math.floor(Math.random() * 999999)}__${Math.floor(
-            Math.random() * 999999
-          )}`,
-          x: 224,
-          y: 139,
-          url: "/img/lady1.png",
-          draggable: true
-        }
+        // {
+        //   id: `${Math.floor(Math.random() * 999999)}__${Math.floor(
+        //     Math.random() * 999999
+        //   )}`,
+        //   x: 224,
+        //   y: 139,
+        //   url: "/img/oldman2.png",
+        //   draggable: true
+        // }, {
+        //   id: `${Math.floor(Math.random() * 999999)}__${Math.floor(
+        //     Math.random() * 999999
+        //   )}`,
+        //   x: 224,
+        //   y: 139,
+        //   url: "/img/lady1.png",
+        //   draggable: true
+        // }
       ],
       foregroundImages: []
     }
@@ -63,7 +63,6 @@ export default new Vuex.Store({
     },
     addActivePageImage(state, newImage) {
       state.activePage.images.push(newImage)
-
     }
   },
   actions: {
