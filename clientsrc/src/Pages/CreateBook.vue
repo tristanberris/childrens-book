@@ -24,7 +24,6 @@
         >
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-            
               <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
@@ -40,7 +39,6 @@
                       placeholder="Enter title"
                       v-model="book.title"
                     />
-                    
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Author</label>
@@ -52,7 +50,7 @@
                       v-model="book.author"
                     />
                   </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
               </div>
               <div class="modal-footer">
@@ -132,8 +130,9 @@ export default {
         height: height
       },
       draggingItem: {},
+      newImage: {},
       selectedShapeId: "",
-      book: {},
+      book: {}
       // imgUrl: {imgUrl: this.picture}
     };
   },
@@ -155,14 +154,10 @@ export default {
     save() {
       // save the active page
       this.$store.dispatch("save", this.activePage);
-
     },
-    createBook(){
-      
-      this.$store.dispatch("createBook", this.book)
-      console.log(this.book)
-
-
+    createBook() {
+      this.$store.dispatch("createBook", this.book);
+      console.log(this.book);
     },
     // loadImg(img) {
     //   console.log("image passed to loadIMg: ", img);
@@ -174,7 +169,7 @@ export default {
           // debugger
           // console.log(img.src);
           // return img.src
-          this.book.imgUrl = img.src
+          this.book.imgUrl = img.src;
         }
       });
     },
@@ -182,12 +177,11 @@ export default {
     setCharacter() {
       this.$store.dispatch("setCharacter");
     },
-    dragStart(img) {
-
-      this.draggingItem = img;
+    dragStart(event, image) {
+      this.draggingItem = image;
       console.log("dragging item", this.draggingItem);
       // save drag element:
-      // this.dragItemId = e.target.id;
+      this.dragItemId = event.target.id;
       // move current element to the top:
       const item = this.list.find(i => i.id === this.dragItemId);
       const index = this.list.indexOf(item);
@@ -196,10 +190,27 @@ export default {
     },
     drop(event) {
       let newImage = this.draggingItem;
+      newImage.id = `${Math.floor(Math.random() * 999999)}__${Math.floor(
+        Math.random() * 999999
+      )}`;
+      newImage.draggable = true;
       newImage.x = event.layerX;
       newImage.y = event.layerY;
-      console.log("event and image: ", event, this.draggingItem, newImage);
-
+      console.log(
+        "image: ",
+        newImage,
+        "draggingItem: ",
+        this.draggingItem,
+        "event: ",
+        event
+      );
+      this.newImage = newImage;
+      try {
+        this.$store.commit("addActivePageImage", this.newImage);
+      } catch (err) {
+        console.eror(err);
+      }
+      this.newImage = {};
       // TODO take the image beign dragged and add it ot the active page
       // activePage.images
     },
