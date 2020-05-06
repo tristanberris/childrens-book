@@ -1,7 +1,13 @@
 <template>
   <div class="CreateBook container-fluid">
     <div class="row mt-2 mb-5">
-      <div class="col-md-8 border rounded border-dark" id="bgId" width="410" height="500" :style="image">
+      <div
+        class="col-md-8 border rounded border-dark"
+        id="bgId"
+        width="410"
+        height="500"
+        :style="{backgroundImage:`url(${this.bgImage})`}"
+      >
         <button class="btn" @click="save()">Save</button>
         <button class="btn" @click="picture()">Picture</button>
         <!-- Button trigger modal -->
@@ -106,7 +112,7 @@
                 />
               </div>
               <div class="col-6" v-for="bgImage in bgOptions" :key="bgImage.url">
-                <img class="img-fluid" :src="bgImage.url" alt="" @click="setBg(bgImage)">
+                <img class="img-fluid" :src="bgImage.url" alt @click="setBg(bgImage)" />
               </div>
             </div>
           </div>
@@ -128,10 +134,7 @@ export default {
         { url: "/img/oldMan1.png" },
         { url: "/img/oldMan2.png" }
       ],
-      bgOptions: [
-        {url: "/img/bg1.jpg"},
-        {url: "/img/bg2.jpg"},
-      ],
+      bgOptions: [{ url: "/img/bg1.jpg" }, { url: "/img/bg2.jpg" }],
       configKonva: {
         width: width,
         height: height
@@ -139,7 +142,8 @@ export default {
       draggingItem: {},
       newImage: {},
       selectedShapeId: "",
-      book: {}
+      book: {},
+      bgImage: "" || "/img/bg2.jpg"
       // imgUrl: {imgUrl: this.picture}
     };
   },
@@ -175,9 +179,10 @@ export default {
     //   console.log("image passed to loadIMg: ", img);
     //   this.$store.dispatch("loadImg", this.activePage.images);
     // },
-    setBg(bgImage){
-      console.log(bgImage.url)
-      document.getElementById("bgId").style.background = "url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSNVl8SvUD3xchNW_rjReg0xJl_SDfUCysgudjlJkTdtTtozUdc&usqp=CAU')"
+    setBg(bg) {
+      console.log("bg: ", bg.url);
+      this.bgImage = bg.url;
+      //document.getElementById("bgId").style.background = "url('${bgImage.url}')"
       // document.getElementById("bgId").style.backgroundColor = "black"
     },
     picture() {
