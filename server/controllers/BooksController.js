@@ -16,19 +16,21 @@ export class BooksController extends BaseController {
   }
   async getAll(req, res, next) {
     try {
+      console.time("test")
       let data = await booksService.getAll()
-      return res.send(data)
+      console.timeEnd("test")
+      res.send(data)
     } catch (error) {
       next(error);
     }
   }
-  async getById(req,res,next){
-      try {
-          let data = await booksService.find({bookId : req.params.id})
-          return res.send(data)
-      } catch (error) {
-          next(error)
-      }
+  async getById(req, res, next) {
+    try {
+      let data = await booksService.getById({ bookId: req.params.id })
+      return res.send(data)
+    } catch (error) {
+      next(error)
+    }
   }
   async create(req, res, next) {
     try {
@@ -42,12 +44,12 @@ export class BooksController extends BaseController {
     }
   }
   //NOTE: verify that userEmail is needed
-  async edit(req,res,next){
-      try {
-          let data = await booksService.put(req.params.id, req.userInfo.email, req.body)
-          return res.send(data)
-      } catch (error) {
-          next(error)
-      }
+  async edit(req, res, next) {
+    try {
+      let data = await booksService.edit(req.params.id, req.body)
+      return res.send(data)
+    } catch (error) {
+      next(error)
+    }
   }
 }

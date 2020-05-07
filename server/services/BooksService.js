@@ -4,23 +4,23 @@ import { BadRequest } from "../utils/Errors";
 class BooksService {
 
     async getAll() {
-        return await dbContext.Books.find()
+        return await dbContext.Books.find({})
     }
 
-    async getById(id){
-        let data = await dbContext.Books.findOne({_id: id})
+    async getById(id) {
+        let data = await dbContext.Books.findOne({ _id: id })
         if (!data) {
             throw new BadRequest("Invalid ID")
-          }
-          return data
+        }
+        return data
     }
 
-    async create(rawData){
+    async create(rawData) {
         let data = await dbContext.Books.create(rawData)
     }
 
-    async edit(id, update){
-        let data = await dbContext.Books.findOneAndUpdate({_id: id}, update, {new:true})
+    async edit(id, update) {
+        let data = await dbContext.Books.findOneAndUpdate({ _id: id }, update, { new: true })
     }
 
 
