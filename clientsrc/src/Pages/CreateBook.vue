@@ -4,8 +4,8 @@
       <div class="col-md-8 border rounded border-dark" id="bgId" width="410" height="500">
         <button class="btn" @click="save()">Save</button>
         <button class="btn" @click="picture()">Picture</button>
-        <button class="btn"
-          @click="bgImage.draggable = !bgImage.draggable">{{bgImage.draggable ? 'Unlock Bg': 'lock Bg'}}</button>
+        <!-- <button class="btn"
+          @click="bgImage.draggable = !bgImage.draggable">{{bgImage.draggable ? 'Unlock Bg': 'lock Bg'}}</button> -->
         <!-- Button trigger modal -->
         <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter"
           @click="picture()">Finish Book</button>
@@ -325,5 +325,9 @@
 
   .bg-image {
     background-size: cover;
+  }
+
+  .main-stage{
+    background-color: white;
   }
 </style>

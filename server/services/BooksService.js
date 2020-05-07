@@ -15,6 +15,11 @@ class BooksService {
         return data
     }
 
+    
+    async getUserBooks(email){
+        return await dbContext.Books.find({creatorEmail: email})
+    }
+
     async create(rawData) {
         let data = await dbContext.Books.create(rawData)
     }

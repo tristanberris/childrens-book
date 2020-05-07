@@ -8,10 +8,11 @@ export class BooksController extends BaseController {
     super("api/books");
     this.router
       .get("", this.getAll)
-      .get("/:id", this.getById)
+      // .get("/id/:id", this.getById)
       .put("", this.edit)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(auth0Provider.getAuthorizedUserInfo)
+      .get("/email", this.getUserBooks)
       .post("", this.create);
   }
   async getAll(req, res, next) {
@@ -24,18 +25,26 @@ export class BooksController extends BaseController {
       next(error);
     }
   }
-  async getById(req, res, next) {
+  async getUserBooks(req,res,next){
     try {
-      let data = await booksService.getById({ bookId: req.params.id })
+      let data = await booksService.getUserBooks(req.userInfo.email)
       return res.send(data)
     } catch (error) {
       next(error)
     }
   }
+  // async getById(req, res, next) {
+  //   try {
+  //     let data = await booksService.getById({ bookId: req.params.id })
+  //     return res.send(data)
+  //   } catch (error) {
+  //     next(error)
+  //   }
+  // }
   async create(req, res, next) {
     try {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
-      req.body.creator = req.userInfo.email;
+      req.body.creatorEmail = req.userInfo.email;
       // req.body.coverImg = req.body.imgUrl
       let data = await booksService.create(req.body)
       return res.send(data);

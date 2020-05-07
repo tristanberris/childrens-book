@@ -10,7 +10,7 @@ const Book = new Schema(
     // closed: { type: Boolean, required: true, default: false},
     imgUrl: {type: String, required: true},
     
-    creatorEmail: { type: String, required: false },
+    creatorEmail: { type: String, required: true },
     
   },
   { timestamps: true, toJSON: { virtuals: true } }

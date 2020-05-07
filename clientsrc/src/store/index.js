@@ -19,6 +19,7 @@ export default new Vuex.Store({
   state: {
     profile: {},
     books: [],
+    userBooks: [],
     activeBook: {
       name: 'woot woot',
       pages: []
@@ -56,6 +57,9 @@ export default new Vuex.Store({
     setBooks(state, books) {
       state.books = books
     },
+    setUserBooks(state, userBooks){
+      state.userBooks = userBooks
+    },
     setActiveBook(state, activeBook) {
       state.activeBook = activeBook
     },
@@ -85,6 +89,15 @@ export default new Vuex.Store({
       try {
         let res = await api.get("books")
         commit('setBooks', res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async getUserBooks({commit, dispatch}){
+      try {
+        
+        let res = await api.get("books/email")
+        commit('setUserBooks', res.data)
       } catch (error) {
         console.error(error)
       }

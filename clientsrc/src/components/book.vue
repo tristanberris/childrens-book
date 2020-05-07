@@ -91,6 +91,7 @@ export default {
   margin-top: 30px;
   box-shadow: 2px 2px 5px black;
   background-size: cover;
+  background-color: white;
   /* width: 100%;
   min-width: 20vw; */
   /* padding-top: 15%; */
@@ -101,5 +102,6 @@ export default {
   min-width: 72vh;
   min-height: 90vh;
   background-size: cover;
+  background-color:white
 }
 </style>
