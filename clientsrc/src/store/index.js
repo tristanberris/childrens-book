@@ -25,6 +25,7 @@ export default new Vuex.Store({
     },
     activePage: {
       id: '21390231984325094093',
+      bgImage: { url: "", draggable: true },
       backgroundImages: [],
       images: [
         // {
