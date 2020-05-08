@@ -89,7 +89,19 @@
         imgOptions: [
           { url: "/img/lady1.png" },
           { url: "/img/oldMan1.png" },
-          { url: "/img/oldMan2.png" }
+          { url: "/img/oldMan2.png" },
+          { url: "/img/cat.png" },
+          { url: "/img/dog.png" },
+          { url: "/img/elephant.png" },
+          { url: "/img/gorilla.png" },
+          { url: "/img/hippo.png" },
+          { url: "/img/mammoth.png" },
+          { url: "/img/owl.png" },
+          { url: "/img/rainbowfish.png" },
+          { url: "/img/sheep.png" },
+          { url: "/img/skunk.png" },
+          { url: "/img/squirrel.png" },
+          { url: "/img/turtle.png" }
         ],
         bgOptions: [{ url: "/img/bg1.jpg" }, { url: "/img/bg2.jpg" }],
         configKonva: {
