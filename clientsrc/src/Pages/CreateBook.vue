@@ -1,7 +1,7 @@
 <template>
   <div class="CreateBook container-fluid">
     <div class="row mt-2 mb-5">
-      <div class="col-md-8 border rounded border-dark" id="bgId" width="410" height="500">
+      <div class="col-md-6 " id="bgId" width="410" height="500">
         <button class="btn" @click="save()">Save</button>
         <button class="btn" @click="picture()">Picture</button>
         <!-- <button class="btn"
@@ -55,7 +55,7 @@
           </v-stage>
         </div>
       </div>
-      <div class="col-md-4 border border-dark rounded shadow bg-light w-100 p-3" width="410" height="500"
+      <div class="col-md-4 offset-md-2 border border-dark rounded shadow bg-light w-100 p-3" width="410" height="500"
         id="drag-items">
         <div class="row">
           <div class="col-6">Forward</div>
@@ -66,7 +66,7 @@
               <!-- Images will be inserted here from a component -->
               <div class="col-4" v-for="image in imgOptions" :key="image.id">
                 <img :src="image.url" alt draggable="true" class="img-fluid" @dragstart="dragStart($event, image)"
-                  @click="loadImg(image)" />
+                   />
               </div>
               <div class="col-6" v-for="bgImage in bgOptions" :key="bgImage.url">
                 <img class="img-fluid" :src="bgImage.url" alt @click="setBg(bgImage)" />
@@ -80,7 +80,7 @@
 </template>
 
 <script>
-  const width = window.innerWidth;
+  const width = 550;
   const height = window.innerHeight;
   let stage = {};
   export default {
@@ -316,6 +316,15 @@
   #myCanvas {
     border: 2px solid black;
     background-color: aliceblue;
+    
+  }
+
+  #bgId{
+    /* border: 5px solid black; */
+  }
+
+  #drag-items{
+    /* margin-left: 50px */
   }
 
   .selectBar {
@@ -329,5 +338,10 @@
 
   .main-stage{
     background-color: white;
+    width: 550px;
+    height: 550px;
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 2px solid black;
   }
 </style>
