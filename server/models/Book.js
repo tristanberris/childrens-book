@@ -5,16 +5,24 @@ const Book = new Schema(
   {
     title: { type: String, required: true },
     author: { type: String, required: true },
-    // story: { type: String, required: true },
-    // bookId: { type: String, required: true },
-    // closed: { type: Boolean, required: true, default: false},
-    imgUrl: {type: String, required: true},
-    
-    
+    createdPage: { type: String, required: true },
+    imgUrl: { type: String, required: true },
     creatorEmail: { type: String, required: true },
-    
   },
   { timestamps: true, toJSON: { virtuals: true } }
+);
+
+const Created = new Schema(
+  {
+    // title: { type: String, required: true },
+    // author: { type: String, required: true },
+    // createdPage: { type: String, required: true },
+    // // bookId: { type: String, required: true },
+    // // closed: { type: Boolean, required: true, default: false},
+    // imgUrl: { type: String, required: true },
+    creatorEmail: { type: String, required: true },
+    canvas: { type: Object, required: true },
+  },
 );
 
 Book.virtual("creator", {

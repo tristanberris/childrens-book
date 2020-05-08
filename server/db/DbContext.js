@@ -8,6 +8,7 @@ import CommentSchema from "../models/Comment"
 import BackgroundImageSchema from "../models/BackgroundImage"
 import CharacterImageSchema from "../models/CharacterImage"
 import PagesSchema from "../models/Page"
+import CreatedSchema from "../models/Book"
 
 class DbContext {
   Values = mongoose.model("Value", ValueSchema);
@@ -19,6 +20,7 @@ class DbContext {
   BackgroundImage = mongoose.model("BackgroundImage", BackgroundImageSchema)
   CharacterImage = mongoose.model("CharacterImage", CharacterImageSchema)
   Pages = mongoose.model("Page", PagesSchema)
+  Created = mongoose.model("Created", CreatedSchema)
 }
 
 export const dbContext = new DbContext();
