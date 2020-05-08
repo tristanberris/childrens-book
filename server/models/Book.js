@@ -8,11 +8,12 @@ const Book = new Schema(
     createdPage: { type: String, required: true },
     imgUrl: { type: String, required: true },
     creatorEmail: { type: String, required: true },
+    // canvas: {type:Canvas}
   },
   { timestamps: true, toJSON: { virtuals: true } }
 );
 
-const Created = new Schema(
+const Canvas = new Schema(
   {
     // title: { type: String, required: true },
     // author: { type: String, required: true },
@@ -20,7 +21,7 @@ const Created = new Schema(
     // // bookId: { type: String, required: true },
     // // closed: { type: Boolean, required: true, default: false},
     // imgUrl: { type: String, required: true },
-    creatorEmail: { type: String, required: true },
+    // creatorEmail: { type: String, required: true },
     canvas: { type: Object, required: true },
   },
 );

@@ -20,6 +20,14 @@ class BooksService {
         return await dbContext.Books.find({creatorEmail: email})
     }
 
+    async getCanvas(bookId){
+        return await dbContext.Books.findById({_id: bookId})
+    }
+
+    async saveCanvas(){
+        return await dbContext.Books.create(rawData)
+    }
+
     async create(rawData) {
         let data = await dbContext.Books.create(rawData)
     }

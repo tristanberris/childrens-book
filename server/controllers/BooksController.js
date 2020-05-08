@@ -8,6 +8,7 @@ export class BooksController extends BaseController {
     super("api/books");
     this.router
       .get("", this.getAll)
+      .get("/canvas", this.getCanvas)
       // .get("/id/:id", this.getById)
       .put("", this.edit)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
@@ -29,6 +30,20 @@ export class BooksController extends BaseController {
     try {
       let data = await booksService.getUserBooks(req.userInfo.email)
       return res.send(data)
+    } catch (error) {
+      next(error)
+    }
+  }
+  async getCanvas(req,res,next){
+    try {
+      let data = await booksService.getCanvas(req.body.bookId)
+    } catch (error) {
+      next(error)
+    }
+  }
+  async saveCanvas(req,res,next){
+    try {
+      let data= await booksService.saveCanvas()
     } catch (error) {
       next(error)
     }
