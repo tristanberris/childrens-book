@@ -7,7 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@bcwdev/auth0-vue": "0.0.14",
+    "@bcwdev/auth0-vue": "0.0.6",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "jquery": "^3.5.0",
