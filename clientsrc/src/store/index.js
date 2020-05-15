@@ -131,7 +131,7 @@ export default new Vuex.Store({
     },
     async deleteBook({commit, dispatch},bookData){
       try {
-        await api.delete("books", bookData._id)
+        await api.delete(`books/${bookData.id}`)
       } catch (error) {
         console.error(error)
       }

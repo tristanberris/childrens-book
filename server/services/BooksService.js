@@ -36,7 +36,7 @@ class BooksService {
         let data = await dbContext.Books.findOneAndUpdate({ _id: id }, update, { new: true })
     }
     async delete(id){
-        let data = await dbContext.Books.findOneAndDelete(id)
+        return await dbContext.Books.findOneAndRemove({ _id : id})
     }
 
 

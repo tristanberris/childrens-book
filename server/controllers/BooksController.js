@@ -11,7 +11,7 @@ export class BooksController extends BaseController {
       .get("/canvas", this.getCanvas)
       // .get("/id/:id", this.getById)
       .put("", this.edit)
-      .delete("", this.delete)
+      .delete("/:id", this.delete)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(auth0Provider.getAuthorizedUserInfo)
       .get("/email", this.getUserBooks)
