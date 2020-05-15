@@ -28,6 +28,10 @@ const routes = [
     component: CreateBook,
     // beforeEnter: authGuard,
   },
+  {
+    path: "*",
+    redirect: "/"
+  }
 ];
 
 const router = new VueRouter({

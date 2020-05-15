@@ -106,6 +106,7 @@ export default new Vuex.Store({
       try {
         console.log(bookData)
         await api.post("books", bookData)
+        router.push({name: "Home"})
 
       } catch (error) {
         console.error(error)
@@ -132,6 +133,7 @@ export default new Vuex.Store({
     async deleteBook({commit, dispatch},bookData){
       try {
         await api.delete(`books/${bookData.id}`)
+        dispatch('getBooks')
       } catch (error) {
         console.error(error)
       }

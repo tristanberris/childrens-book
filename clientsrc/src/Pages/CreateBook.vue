@@ -11,14 +11,14 @@
           type="button"
           class="btn"
           data-toggle="modal"
-          data-target="#exampleModalCenter"
+          data-target="#modal"
           @click="picture()"
         >Finish Book</button>
 
         <!-- Modal -->
         <div
           class="modal fade"
-          id="exampleModalCenter"
+          id="modal"
           tabindex="-1"
           role="dialog"
           aria-labelledby="exampleModalCenterTitle"
@@ -209,6 +209,7 @@ export default {
     },
     createBook() {
       this.$store.dispatch("createBook", this.book);
+      $("#modal").modal('toggle')
       console.log(this.book);
     },
     // loadImg(img) {
