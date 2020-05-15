@@ -5,8 +5,8 @@ const Book = new Schema(
   {
     title: { type: String, required: true },
     author: { type: String, required: true },
-    createdPage: { type: String, required: true },
-    imgUrl: { type: String, required: true },
+    // createdPage: { type: String, required: true },
+    imgUrl: { type: String, required: true }, 
     creatorEmail: { type: String, required: true },
     // canvas: {type:Canvas}
   },

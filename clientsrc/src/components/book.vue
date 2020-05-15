@@ -9,12 +9,16 @@
       :style="{backgroundImage:`url(${bookData.imgUrl})`}"
        data-toggle="modal" :data-target="'#bookModal-'+bookData.id"
     >
+     
       <!-- <img v-bind:src="bookData.coverImg" class="img img-fluid bg"  alt=""/> -->
 
       <h2 class="align-self-start text-center w-100 mb-auto">{{bookData.title}}</h2>
 
       <h4 class="text-center mx-auto">{{bookData.author}}</h4>
       </div>
+      <button v-if="bookData.creatorEmail == profile.email" type="button" class=" btn btn-danger text-center" @click="deleteBook(bookData)">
+        <span>delete</span>
+      </button>
 
   <!-- </a> -->
       
@@ -56,11 +60,20 @@
 export default {
   name: "book",
   props: ["bookData"],
+  // mounted:
   data() {
     return {};
   },
-  computed: {},
-  methods: {},
+  computed: {
+      profile() {
+      return this.$store.state.profile;
+    },
+  },
+  methods: {
+    deleteBook(){
+      this.$store.dispatch('deleteBook', this.bookData)
+    }
+  },
   components: {}
 };
 </script>

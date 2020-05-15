@@ -35,6 +35,9 @@ class BooksService {
     async edit(id, update) {
         let data = await dbContext.Books.findOneAndUpdate({ _id: id }, update, { new: true })
     }
+    async delete(id){
+        let data = await dbContext.Books.findOneAndDelete(id)
+    }
 
 
     //   async findAll(query = {}) {

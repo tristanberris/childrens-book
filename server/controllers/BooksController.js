@@ -11,6 +11,7 @@ export class BooksController extends BaseController {
       .get("/canvas", this.getCanvas)
       // .get("/id/:id", this.getById)
       .put("", this.edit)
+      .delete("", this.delete)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(auth0Provider.getAuthorizedUserInfo)
       .get("/email", this.getUserBooks)
@@ -71,6 +72,14 @@ export class BooksController extends BaseController {
   async edit(req, res, next) {
     try {
       let data = await booksService.edit(req.params.id, req.body)
+      return res.send(data)
+    } catch (error) {
+      next(error)
+    }
+  }
+  async delete(req,res,next){
+    try {
+      let data = await booksService.delete(req.params.id)
       return res.send(data)
     } catch (error) {
       next(error)

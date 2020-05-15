@@ -129,6 +129,13 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async deleteBook({commit, dispatch},bookData){
+      try {
+        await api.delete("books", bookData._id)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async save({ commit, dispatch }, activePage) {
       try {
 

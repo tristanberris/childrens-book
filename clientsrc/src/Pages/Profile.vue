@@ -4,7 +4,9 @@
     <img class="rounded" :src="profile.picture" alt="" />
     <p>{{ profile.email }}</p>
     <div class="row"   >
-    <Book v-for="Book in Books" :bookData="Book" :key="Book._id"> </Book>
+    <Book v-for="Book in Books" :bookData="Book" :key="Book._id"> 
+      
+    </Book>
  <!-- v-if="Book.creatorEmail == profile.email"  -->
  <!-- v-if="this.$auth.userInfo.email == this.bugDetails.creatorEmail -->
 
