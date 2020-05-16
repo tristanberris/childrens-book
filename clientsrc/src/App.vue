@@ -18,8 +18,8 @@ export default {
     }
   },
   components: {
-    Navbar,
-  },
+    Navbar
+  }
 };
 </script>
 
@@ -27,4 +27,8 @@ export default {
 @import "./assets/_variables.scss";
 @import "bootstrap";
 @import "./assets/_overrides.scss";
+body {
+  background-image: url(https://cdn3.vectorstock.com/i/1000x1000/87/67/library-bookshelves-wall-vector-20228767.jpg);
+  background-size: cover;
+}
 </style>

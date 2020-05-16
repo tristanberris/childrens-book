@@ -74,8 +74,11 @@ export default new Vuex.Store({
     clearPage(state) {
       state.activePage.images = []
     },
+    clearActivePagePages(state){
+      state.activePage.pages = []
+    },
     setPages(state, newPage){
-      state.bookPages.push(newPage)
+      state.activePage.pages.push(newPage)
     }
   },
   actions: {
@@ -115,7 +118,7 @@ export default new Vuex.Store({
         console.log(bookData)
         await api.post("books", bookData, this.state.pages.data)
         router.push({ name: "Home" })
-
+        commit('clearActivePagePages')
       } catch (error) {
         console.error(error)
       }

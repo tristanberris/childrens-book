@@ -209,8 +209,12 @@ export default {
       this.$store.dispatch("save", this.activePage);
     },
     createBook() {
+      this.book.pages = this.$store.state.activePage.pages
+      console.log("this.$store.state.activePage.pages")
+      console.log(this.$store.state.activePage.pages)
       this.$store.dispatch("createBook", this.book);
       $("#modal").modal("toggle");
+      console.log("this.book");
       console.log(this.book);
     },
     addPage() {
@@ -220,6 +224,7 @@ export default {
           // console.log(img.src);
           // return img.src
           this.book.imgUrl = img.src;
+          // this.book.pages.push(img.src)
           this.$store.dispatch("addPage", img.src)
           // console.log(this.$store.state)
 
@@ -244,6 +249,7 @@ export default {
           // console.log(img.src);
           // return img.src
           this.book.imgUrl = img.src;
+          this.$store.dispatch("addPage", img.src)
           return this.book.imgUrl
         }
       });
