@@ -42,15 +42,18 @@
       aria-hidden="true"
     >
       <div
-        class="modalMadeBook img d-flex flex-column modal-dialog modal-dialog-centered"
+        class="modalMadeBook img d-flex flex-column"
         role="document"
-        :style="{backgroundImage:`url(${bookData.imgUrl})`}"
+        :style="{backgroundImage:`url(${currentPage()})`}"
       >
         <!-- <div class="modal-content"> -->
         <!-- <h2 class="align-self-start text-center w-100 mb-auto">{{bookData.title}}</h2> -->
         <h2 class="align-self-start text-center cover1 w-100 mb-auto">{{bookData.title}}</h2>
         <h4 class="text-center mx-auto cover1">♥{{bookData.author}}</h4>
-        <div class="modal-footer"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" @click="previousPage()">Previous Page</button>
+          <button type="button" class="btn btn-primary" @click="nextPage()">Next Page</button>
+        </div>
         <!-- </div> -->
       </div>
     </div>
@@ -64,7 +67,9 @@ export default {
   props: ["bookData"],
   // mounted:
   data() {
-    return {};
+    return {
+      currentPageNum: 0
+    };
   },
   computed: {
     profile() {
@@ -76,7 +81,21 @@ export default {
       if (confirm("Do you really want to delete?")) {
         this.$store.dispatch("deleteBook", this.bookData);
       }
+    },
+     nextPage() {
+      if (this.currentPageNum < this.bookData.pages.length - 1) {
+        this.currentPageNum++;
+      }
+    },
+    previousPage() {
+      if (this.currentPageNum > 0) {
+        this.currentPageNum--;
+      }
+    },
+    currentPage() {
+      return this.bookData.pages[this.currentPageNum];
     }
+  
   },
   components: {}
 };
