@@ -2,8 +2,9 @@
   <div class="CreateBook container-fluid">
     <div class="row mt-2 mb-5">
       <div class="col-md-6" id="bgId" width="410" height="500">
-        <button class="btn" @click="save()">Save</button>
-        <button class="btn" @click="picture()">Picture</button>
+        <!-- <button class="btn" @click="save()">Save</button>
+        <button class="btn" @click="picture()">Picture</button>-->
+        <button class="btn" @click="addPage()">Add Page</button>
         <!-- <button class="btn"
         @click="bgImage.draggable = !bgImage.draggable">{{bgImage.draggable ? 'Unlock Bg': 'lock Bg'}}</button>-->
         <!-- Button trigger modal -->
@@ -209,8 +210,15 @@ export default {
     },
     createBook() {
       this.$store.dispatch("createBook", this.book);
-      $("#modal").modal('toggle')
+      $("#modal").modal("toggle");
       console.log(this.book);
+    },
+    addPage() {
+      // this.$store.dispatch("addPage", this.book)
+      this.$store.commit("clearPage");
+
+      // const transformer = this.$refs.transformer.getNode().clearCache()
+      // debugger
     },
     // loadImg(img) {
     //   console.log("image passed to loadIMg: ", img);

@@ -57,7 +57,7 @@ export default new Vuex.Store({
     setBooks(state, books) {
       state.books = books
     },
-    setUserBooks(state, userBooks){
+    setUserBooks(state, userBooks) {
       state.userBooks = userBooks
     },
     setActiveBook(state, activeBook) {
@@ -68,6 +68,9 @@ export default new Vuex.Store({
     },
     addActivePageImage(state, newImage) {
       state.activePage.images.push(newImage)
+    },
+    clearPage(state) {
+      state.activePage.images = []
     }
   },
   actions: {
@@ -93,9 +96,9 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async getUserBooks({commit, dispatch}){
+    async getUserBooks({ commit, dispatch }) {
       try {
-        
+
         let res = await api.get("books/email")
         commit('setUserBooks', res.data)
       } catch (error) {
@@ -106,7 +109,7 @@ export default new Vuex.Store({
       try {
         console.log(bookData)
         await api.post("books", bookData)
-        router.push({name: "Home"})
+        router.push({ name: "Home" })
 
       } catch (error) {
         console.error(error)
@@ -130,7 +133,7 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async deleteBook({commit, dispatch},bookData){
+    async deleteBook({ commit, dispatch }, bookData) {
       try {
         await api.delete(`books/${bookData.id}`)
         dispatch('getBooks')
