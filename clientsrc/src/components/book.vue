@@ -83,7 +83,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 /* .book{   
   height: 50vh;
   max-width: 60vw;
