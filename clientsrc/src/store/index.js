@@ -20,9 +20,9 @@ export default new Vuex.Store({
     profile: {},
     books: [],
     userBooks: [],
+    pages: [],
     activeBook: {
       name: 'woot woot',
-      pages: []
     },
     activePage: {
       id: '21390231984325094093',
@@ -47,7 +47,8 @@ export default new Vuex.Store({
         //   draggable: true
         // }
       ],
-      foregroundImages: []
+      foregroundImages: [],
+      pages: [],
     }
   },
   mutations: {
@@ -71,6 +72,9 @@ export default new Vuex.Store({
     },
     clearPage(state) {
       state.activePage.images = []
+    },
+    setPages(state, newPage){
+      state.pages = newPage
     }
   },
   actions: {
@@ -148,6 +152,13 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async addPage({ commit, dispatch}, newPage){
+      try {
+        commit('setPages', newPage)
+      } catch (error) {
+        console.error(error)
+      }
+    }
 
     // loadImg({ commit, dispatch }, img) {
     //   console.log("loading img")

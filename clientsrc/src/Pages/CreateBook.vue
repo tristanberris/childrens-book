@@ -214,21 +214,28 @@ export default {
       console.log(this.book);
     },
     addPage() {
-      // this.$store.dispatch("addPage", this.book)
-      this.$store.commit("clearPage");
+      stage.toImage({
+        callback: img => {
+          // debugger
+          // console.log(img.src);
+          // return img.src
+          this.book.imgUrl = img.src;
+          this.$store.dispatch("addPage", img.src)
+          console.log(this.$store.state)
 
-      // const transformer = this.$refs.transformer.getNode().clearCache()
-      // debugger
+        }
+      });
+          
+      // console.log(this.picture())
+      // this.$store.dispatch("addPage")
+      this.$store.commit("clearPage");
+      
     },
-    // loadImg(img) {
-    //   console.log("image passed to loadIMg: ", img);
-    //   this.$store.dispatch("loadImg", this.activePage.images);
-    // },
+    
     setBg(bg) {
       console.log("bg: ", bg.url);
       this.bgImage.url = bg.url;
-      //document.getElementById("bgId").style.background = "url('${bgImage.url}')"
-      // document.getElementById("bgId").style.backgroundColor = "black"
+     
     },
     picture() {
       stage.toImage({
@@ -237,6 +244,7 @@ export default {
           // console.log(img.src);
           // return img.src
           this.book.imgUrl = img.src;
+          return this.book.imgUrl
         }
       });
     },
