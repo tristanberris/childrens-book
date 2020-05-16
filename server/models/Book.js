@@ -9,6 +9,7 @@ const Book = new Schema(
     imgUrl: { type: String, required: true }, 
     creatorEmail: { type: String, required: true },
     // canvas: {type:Canvas}
+    pages: {type: Array, required: true}
   },
   { timestamps: true, toJSON: { virtuals: true } }
 );
