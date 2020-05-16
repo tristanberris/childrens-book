@@ -221,7 +221,7 @@ export default {
           // return img.src
           this.book.imgUrl = img.src;
           this.$store.dispatch("addPage", img.src)
-          console.log(this.$store.state)
+          // console.log(this.$store.state)
 
         }
       });

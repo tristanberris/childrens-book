@@ -21,6 +21,7 @@ export default new Vuex.Store({
     books: [],
     userBooks: [],
     pages: [],
+    bookPages: [],
     activeBook: {
       name: 'woot woot',
     },
@@ -48,7 +49,7 @@ export default new Vuex.Store({
         // }
       ],
       foregroundImages: [],
-      pages: [],
+     
     }
   },
   mutations: {
@@ -74,7 +75,7 @@ export default new Vuex.Store({
       state.activePage.images = []
     },
     setPages(state, newPage){
-      state.pages = newPage
+      state.bookPages.push(newPage)
     }
   },
   actions: {
@@ -112,7 +113,7 @@ export default new Vuex.Store({
     async createBook({ commit, dispatch }, bookData) {
       try {
         console.log(bookData)
-        await api.post("books", bookData)
+        await api.post("books", bookData, this.state.pages.data)
         router.push({ name: "Home" })
 
       } catch (error) {
@@ -155,6 +156,7 @@ export default new Vuex.Store({
     async addPage({ commit, dispatch}, newPage){
       try {
         commit('setPages', newPage)
+        console.log(this.state.bookPages)
       } catch (error) {
         console.error(error)
       }
